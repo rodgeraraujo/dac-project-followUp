@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ifpb.folloup.consumer;
+package com.ifpb.followup.consumer;
 
 import com.ifpb.followup.model.Aluno;
 import java.io.StringReader;
