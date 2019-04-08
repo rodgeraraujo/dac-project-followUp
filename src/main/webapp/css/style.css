@@ -1,3 +1,10 @@
+.modal{
+    overflow: visible !important;
+}
+.jquery-modal{
+    z-index: 50;
+}
+
 .section.full-height{
     align-items: center;
     display: flex;
@@ -13,16 +20,25 @@
     background-color: #209CEE;
 }
 
-.form-login{
+.form-login, .form-cadastro{
     padding: 1rem;
     border-radius: 15px; 
-    background-color: rgba(255,255,255,.4);
+    background-color: rgba(255,255,255,.30);
 }
 
-.form-login input{
+.form-cadastro{
+    max-width: 600px;
+}
+
+.form-login input, .form-cadastro input{
     margin-bottom: 1rem;
 }
-
-.form-login table td label{
+.form-login table, .form-cadastro table{
+    width: 100%;
+}
+.form-login table td, .form-cadastro table td{
+    text-align: center !important;
+}
+.form-login table td label, .form-cadastro table td label{
     margin-right: 1rem;
 }
