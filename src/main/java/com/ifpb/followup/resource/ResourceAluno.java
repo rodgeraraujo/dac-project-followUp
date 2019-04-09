@@ -6,7 +6,7 @@
 package com.ifpb.followup.resource;
 
 import com.ifpb.followup.model.Aluno;
-import com.ifpb.followup.service.AlunoIF;
+import com.ifpb.followup.interfaces.AlunoIF;
 import java.net.URI;
 import java.util.List;
 import javax.ejb.Stateless;

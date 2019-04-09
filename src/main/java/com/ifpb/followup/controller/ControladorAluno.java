@@ -5,7 +5,7 @@
  */
 package com.ifpb.followup.controller;
 
-import com.ifpb.folloup.consumer.ConsumerAluno;
+import com.ifpb.followup.consumer.ConsumerAluno;
 import com.ifpb.followup.model.Aluno;
 import java.util.List;
 import javax.faces.bean.RequestScoped;

@@ -69,9 +69,10 @@ public class ConsumerProfessor {
                 new StringReader(json)
         ).readArray();
 
-        return array.stream()
-                .map(obj -> new Professor((JsonObject) obj))
-                .collect(Collectors.toList());
+//        return array.stream()
+//                .map(obj -> new Professor((JsonObject) obj))
+//                .collect(Collectors.toList());
+        return null;
     }
 
     public Professor converter(String json) {
@@ -79,6 +80,7 @@ public class ConsumerProfessor {
                 new StringReader(json)
         ).readObject();
 
-        return new Professor(jsonObject);
+//        return new Professor(jsonObject);
+        return null;
     }
 }
