@@ -2,6 +2,7 @@ package com.ifpb.followup.model;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.json.JsonObject;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,8 +12,8 @@ import javax.persistence.Id;
  * @author Amanda
  */
 @Entity
-public class Professor implements Serializable{
-    
+public class Professor implements Serializable {
+
     @Id
     @GeneratedValue
     private long id;
@@ -22,6 +23,10 @@ public class Professor implements Serializable{
     private int matricula;
 
     public Professor() {
+    }
+
+    public Professor(JsonObject jsonObject) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public long getId() {
@@ -109,5 +114,5 @@ public class Professor implements Serializable{
     public String toString() {
         return "Professor{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", matricula=" + matricula + '}';
     }
-    
+
 }
