@@ -17,7 +17,7 @@ import javax.persistence.PersistenceContext;
  * Created by Rodger on Apr 8, 2019 10:80:54 AM
  */
 @Stateless
-public class AlunoService extends AbstractFacade<Aluno> {
+public class AlunoService extends AbstractServiceFacade<Aluno> {
 
     @PersistenceContext(unitName = "followupPU")
     private EntityManager em;

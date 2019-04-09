@@ -1,6 +1,12 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package com.ifpb.followup.api.service;
 
-import com.ifpb.followup.model.Professor;
+import com.ifpb.followup.model.Questao;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -8,24 +14,24 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * Created by Rodger on Apr 8, 2019 10:10:48 AM
+ * Created by Rodger on Apr 9, 2019 6:56:08 PM
  */
 @Stateless
-public class ProfessorService extends AbstractServiceFacade<Professor> {
+public class QuestaoService extends AbstractServiceFacade<Questao> {
 
     @PersistenceContext(unitName = "followupPU")
     private EntityManager em;
 
-    public ProfessorService() {
-        super(Professor.class);
+    public QuestaoService() {
+        super(Questao.class);
     }
 
     @Override
-    public void novo(Professor entity) {
+    public void novo(Questao entity) {
         super.novo(entity);
     }
 
-    public void editar(Long id, Professor entity) {
+    public void editar(Long id, Questao entity) {
         super.editar(entity);
     }
 
@@ -33,17 +39,13 @@ public class ProfessorService extends AbstractServiceFacade<Professor> {
         super.remover(super.buscar(id));
     }
 
-    public Professor buscar(Long id) {
+    public Questao buscar(Long id) {
         return super.buscar(id);
     }
 
     @Override
-    public List<Professor> buscarTodos() {
+    public List<Questao> buscarTodos() {
         return super.buscarTodos();
-    }
-
-    public List<Professor> buscarEntre(Integer de, Integer ate) {
-        return super.buscarEntre(new int[]{de, ate});
     }
 
     @Override

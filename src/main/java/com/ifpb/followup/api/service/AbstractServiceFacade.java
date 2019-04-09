@@ -16,11 +16,11 @@ import javax.persistence.criteria.Root;
  *
  * Created by Rodger on Apr 8, 2019 10:01:48 PM
  */
-public abstract class AbstractFacade<T> {
+public abstract class AbstractServiceFacade<T> {
 
     private Class<T> entityClass;
 
-    public AbstractFacade(Class<T> entityClass) {
+    public AbstractServiceFacade(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
 

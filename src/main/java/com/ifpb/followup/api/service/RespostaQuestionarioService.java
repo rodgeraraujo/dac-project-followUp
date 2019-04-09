@@ -1,6 +1,6 @@
 package com.ifpb.followup.api.service;
 
-import com.ifpb.followup.model.Professor;
+import com.ifpb.followup.model.RespostaQuestionario;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -8,24 +8,24 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * Created by Rodger on Apr 8, 2019 10:10:48 AM
+ * Created by Rodger on Apr 9, 2019 7:11:17 PM
  */
 @Stateless
-public class ProfessorService extends AbstractServiceFacade<Professor> {
+public class RespostaQuestionarioService extends AbstractServiceFacade<RespostaQuestionario> {
 
     @PersistenceContext(unitName = "followupPU")
     private EntityManager em;
 
-    public ProfessorService() {
-        super(Professor.class);
+    public RespostaQuestionarioService() {
+        super(RespostaQuestionario.class);
     }
 
     @Override
-    public void novo(Professor entity) {
+    public void novo(RespostaQuestionario entity) {
         super.novo(entity);
     }
 
-    public void editar(Long id, Professor entity) {
+    public void editar(Long id, RespostaQuestionario entity) {
         super.editar(entity);
     }
 
@@ -33,17 +33,13 @@ public class ProfessorService extends AbstractServiceFacade<Professor> {
         super.remover(super.buscar(id));
     }
 
-    public Professor buscar(Long id) {
+    public RespostaQuestionario buscar(Long id) {
         return super.buscar(id);
     }
 
     @Override
-    public List<Professor> buscarTodos() {
+    public List<RespostaQuestionario> buscarTodos() {
         return super.buscarTodos();
-    }
-
-    public List<Professor> buscarEntre(Integer de, Integer ate) {
-        return super.buscarEntre(new int[]{de, ate});
     }
 
     @Override

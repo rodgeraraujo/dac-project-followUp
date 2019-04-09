@@ -3,7 +3,9 @@ package com.ifpb.followup.model;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -11,10 +13,11 @@ import javax.persistence.OneToMany;
  *
  * @author Amanda
  */
+@Entity
 public class Atividade implements Serializable{
     
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @OneToMany
     private List<Questao> questoes;
