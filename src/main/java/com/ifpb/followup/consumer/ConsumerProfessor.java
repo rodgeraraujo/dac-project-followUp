@@ -5,7 +5,7 @@
  */
 package com.ifpb.followup.consumer;
 
-import com.ifpb.followup.model.Aluno;
+import com.ifpb.followup.model.Professor;
 import java.io.StringReader;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,61 +24,61 @@ import javax.ws.rs.core.Response;
  * @author Cliente
  */
 @Stateless
-public class ConsumerAluno {
+public class ConsumerProfessor {
 
-    private final String url = "http://localhost:8080/followUP/api/alunos";
+    private final String url = "http://localhost:8080/followUP/api/professores";
     private final Client client = ClientBuilder.newClient();
-    private final WebTarget alunos = client.target(url);
+    private final WebTarget professores = client.target(url);
 
-    public Aluno salvar(Aluno aluno) {
-        Response resposta = alunos.request().
-                post(Entity.json(aluno));
+    public Professor salvar(Professor professor) {
+        Response resposta = professores.request().
+                post(Entity.json(professor));
 
         String json = resposta.readEntity(String.class);
         return converter(json);
 
     }
 
-    public Aluno buscar(String id) {
-        WebTarget alunocomId = alunos.path("{id}").resolveTemplate("id", id);
-        Response resposta = alunocomId.request().get();
+    public Professor buscar(String id) {
+        WebTarget professorComId = professores.path("{id}").resolveTemplate("id", id);
+        Response resposta =  professorComId.request().get();
         String corpo = resposta.readEntity(String.class);
         return converter(corpo);
     }
 
     public void delete(String id) {
-        WebTarget alunocomId = alunos.path("{id}")
+        WebTarget professorComId = professores.path("{id}")
                 .resolveTemplate("id", id);
-     Response delete = alunocomId.request().delete();
-        
+        Response delete = professorComId.request().delete();
+
     }
 
-    public Aluno atualizar(Aluno aluno) {
-        WebTarget alunoComId = alunos.path("{id}")
-                .resolveTemplate("id", aluno.getId());
-        Response resposta = alunoComId.request().
-                put(Entity.json(aluno));
+    public Professor atualizar(Professor professor) {
+        WebTarget professorComId = professores.path("{id}")
+                .resolveTemplate("id", professor.getId());
+        Response resposta = professorComId.request().
+                put(Entity.json(professor));
         String json = resposta.readEntity(String.class);
         return converter(json);
     }
 
-    public List<Aluno> alunos() {
-        Response resposta = alunos.request().get();
+    public List<Professor> professores() {
+        Response resposta = professores.request().get();
         String json = resposta.readEntity(String.class);
         JsonArray array = Json.createReader(
                 new StringReader(json)
         ).readArray();
 
         return array.stream()
-                .map(obj -> new Aluno((JsonObject) obj))
+                .map(obj -> new Professor((JsonObject) obj))
                 .collect(Collectors.toList());
     }
 
-    public Aluno converter(String json) {
+    public Professor converter(String json) {
         JsonObject jsonObject = Json.createReader(
                 new StringReader(json)
         ).readObject();
 
-        return new Aluno(jsonObject);
+        return new Professor(jsonObject);
     }
 }

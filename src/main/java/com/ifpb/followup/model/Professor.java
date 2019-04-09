@@ -11,8 +11,8 @@ import javax.persistence.Id;
  * @author Amanda
  */
 @Entity
-public class Professor implements Serializable{
-    
+public class Professor implements Serializable {
+
     @Id
     @GeneratedValue
     private long id;
@@ -109,5 +109,5 @@ public class Professor implements Serializable{
     public String toString() {
         return "Professor{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", matricula=" + matricula + '}';
     }
-    
+
 }
