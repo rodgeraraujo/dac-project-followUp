@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -33,7 +34,7 @@ public class Questao implements Serializable{
     private String alternativaD;
     @Column(columnDefinition = "CHAR(1)", nullable = false)
     private char alternativaCorreta;
-
+    
     public Questao() {
     }
 

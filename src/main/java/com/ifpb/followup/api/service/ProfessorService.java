@@ -36,6 +36,10 @@ public class ProfessorService extends AbstractServiceFacade<Professor> {
     public Professor buscar(Long id) {
         return super.buscar(id);
     }
+    
+    public Professor buscarPorEmail(String email){
+        return super.buscarPorEmail(email);
+    }
 
     @Override
     public List<Professor> buscarTodos() {

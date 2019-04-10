@@ -5,7 +5,6 @@
  */
 package com.ifpb.followup.consumer;
 
-import com.ifpb.followup.model.Professor;
 import com.ifpb.followup.model.Questao;
 import java.io.StringReader;
 import java.util.List;
@@ -75,7 +74,6 @@ public class ConsumerQuestao {
         JsonObject jsonObject = Json.createReader(
             new StringReader(json)
         ).readObject();
-
         return new Questao(jsonObject);
     }
 

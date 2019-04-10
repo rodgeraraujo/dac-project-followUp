@@ -41,6 +41,13 @@ public class ConsumerProfessor {
         String corpo = resposta.readEntity(String.class);
         return converter(corpo);
     }
+    
+    public Professor buscarPorEmail(String email){
+        WebTarget professorComId = professores.path("{email}").resolveTemplate("email", email);
+        Response resposta =  professorComId.request().get();
+        String corpo = resposta.readEntity(String.class);
+        return converter(corpo);
+    }
 
     public void delete(String id) {
         WebTarget professorComId = professores.path("{id}")

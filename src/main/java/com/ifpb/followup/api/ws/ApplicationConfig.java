@@ -23,11 +23,11 @@ public class ApplicationConfig extends Application {
     }
 
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(ResourceAluno.class);
-        resources.add(ResourceAvaliacao.class);
-        resources.add(ResourceProfessor.class);
-        resources.add(ResourceQuestao.class);
-        resources.add(ResourceResposta.class);      
+        resources.add(com.ifpb.followup.api.resource.ResourceAluno.class);
+        resources.add(com.ifpb.followup.api.resource.ResourceAvaliacao.class);
+        resources.add(com.ifpb.followup.api.resource.ResourceProfessor.class);
+        resources.add(com.ifpb.followup.api.resource.ResourceQuestao.class);
+        resources.add(com.ifpb.followup.api.resource.ResourceResposta.class);      
     }
     
 }

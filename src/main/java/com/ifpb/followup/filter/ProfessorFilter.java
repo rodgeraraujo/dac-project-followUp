@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Amanda
  */
-//@WebFilter(urlPatterns = {"/aluno/*"})
-public class AlunoFilter implements Filter{
+//@WebFilter(urlPatterns = {"/professor/*"})
+public class ProfessorFilter implements Filter{
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -34,7 +34,7 @@ public class AlunoFilter implements Filter{
         String tipoUsuario = (String) request.getSession().getAttribute("tipoUsuario");
         Aluno usuario = (Aluno) request.getSession().getAttribute("usuario");
     
-        if(usuario == null || !tipoUsuario.equals("aluno")){
+        if(usuario == null || !tipoUsuario.equals("professor")){
             response.sendRedirect(request.getServletContext().getContextPath() + "/index.xhtml");
         } 
         
@@ -43,7 +43,7 @@ public class AlunoFilter implements Filter{
 
     @Override
     public void destroy() {
-        
+       
     }
     
 }

@@ -78,8 +78,9 @@ public class ConsumerAluno {
     }
 
     public Aluno converter(String json) {
+        String j = json.replaceAll("\r?\n", "");
         JsonObject jsonObject = Json.createReader(
-                new StringReader(json)
+                new StringReader(j)
         ).readObject();
 
         return new Aluno(jsonObject);

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Amand
+ * @author Amanda
  */
 @Named
 @SessionScoped
@@ -39,6 +39,8 @@ public class ControladorAutenticacao implements Serializable {
 
         FacesContext context = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+        session.setAttribute("usuario", "user");
+        session.setAttribute("tipoUsuario", "professor");
 
         if (tipo.equals(TIPO_ALUNO)) {
             aluno = consumerAluno.buscarPorEmail(email);
@@ -49,11 +51,12 @@ public class ControladorAutenticacao implements Serializable {
                 return TIPO_ALUNO.toLowerCase() + "/index.xhtml?faces-redirect=true";
             }
         } else if (tipo.equals(TIPO_PROFESSOR)) {
-//            professor = consumerProfessor.buscar(email);
-
+            professor = consumerProfessor.buscarPorEmail(email);
+            session.setAttribute("usuario", professor);
+                session.setAttribute("tipoUsuario", "professor");
             if (email.equals("professor") && senha.equals("professor")) {
-//                session.setAttribute("usuario", professor);
-//                session.setAttribute("tipoUsuario", "professor");
+                session.setAttribute("usuario", professor);
+                session.setAttribute("tipoUsuario", "professor");
                 return TIPO_PROFESSOR.toLowerCase() + "/index.xhtml?faces-redirect=true";
             }
         }
