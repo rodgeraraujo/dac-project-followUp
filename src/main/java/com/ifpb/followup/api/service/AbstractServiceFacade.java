@@ -47,7 +47,7 @@ public abstract class AbstractServiceFacade<T> {
         CriteriaQuery<T> query = builder.createQuery(entityClass);
         Root<T> root = query.from(entityClass);
         query.select(root).where(builder.equal(root.get("email"), email));
-        return getEntityManager().createQuery(query).getSingleResult();
+        return getEntityManager().createQuery(query).getSingleResult(); 
     }
 
     public List<T> buscarTodos() {
