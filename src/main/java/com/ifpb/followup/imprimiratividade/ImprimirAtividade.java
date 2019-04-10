@@ -5,7 +5,6 @@
  */
 package com.ifpb.followup.imprimiratividade;
 
-import com.ifpb.followup.model.Questao;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;

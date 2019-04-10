@@ -2,6 +2,7 @@ package com.ifpb.followup.model;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.json.JsonObject;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +24,14 @@ public class Professor implements Serializable {
     private int matricula;
 
     public Professor() {
+    }
+
+    public Professor(JsonObject jsonObject) {
+        this.id = jsonObject.getJsonNumber("id").longValue();
+        this.nome = jsonObject.getString("nome");
+        this.email = jsonObject.getString("email");
+        this.senha = jsonObject.getString("senha");
+        this.matricula = jsonObject.getInt("matricula");
     }
 
     public long getId() {

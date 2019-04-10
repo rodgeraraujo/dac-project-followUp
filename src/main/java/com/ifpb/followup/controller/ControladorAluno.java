@@ -35,20 +35,20 @@ public class ControladorAluno {
         this.consumerAluno.delete(String.valueOf(id));
         return null;
     }
-     public String atualizar() {
-     Aluno atualizarAluno= this.consumerAluno.atualizar( this.aluno);
-       
+
+    public String atualizar() {
+        Aluno atualizarAluno = this.consumerAluno.atualizar(this.aluno);
         return null;
     }
-    
+
     public List<Aluno> todosOsProdutos() {
         return this.consumerAluno.alunos();
     }
-    
-    public Aluno buscar(long id){
-    return this.consumerAluno.buscar(String.valueOf(id));
+
+    public Aluno buscar(long id) {
+        return this.consumerAluno.buscar(String.valueOf(id));
     }
-    
+
     public Aluno getAluno() {
         return aluno;
     }

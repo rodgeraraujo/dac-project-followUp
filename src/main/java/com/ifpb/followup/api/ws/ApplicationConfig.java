@@ -1,13 +1,10 @@
 package com.ifpb.followup.api.ws;
 
 import com.ifpb.followup.api.resource.ResourceAluno;
-import com.ifpb.followup.api.resource.ResourceAtividade;
+import com.ifpb.followup.api.resource.ResourceAvaliacao;
 import com.ifpb.followup.api.resource.ResourceProfessor;
 import com.ifpb.followup.api.resource.ResourceQuestao;
-import com.ifpb.followup.api.resource.ResourceQuestionario;
 import com.ifpb.followup.api.resource.ResourceResposta;
-import com.ifpb.followup.api.resource.ResourceRespostaAtividade;
-import com.ifpb.followup.api.resource.ResourceRespostaQuestionario;
 import java.util.Set;
 import javax.ws.rs.core.Application;
 
@@ -27,14 +24,10 @@ public class ApplicationConfig extends Application {
 
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(ResourceAluno.class);
-        resources.add(ResourceAtividade.class);
+        resources.add(ResourceAvaliacao.class);
         resources.add(ResourceProfessor.class);
         resources.add(ResourceQuestao.class);
-        resources.add(ResourceQuestionario.class);
-        resources.add(ResourceResposta.class);
-        resources.add(ResourceRespostaAtividade.class);
-        resources.add(ResourceRespostaQuestionario.class);
-        
+        resources.add(ResourceResposta.class);      
     }
     
 }

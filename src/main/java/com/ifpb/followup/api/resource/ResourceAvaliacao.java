@@ -6,8 +6,8 @@
 
 package com.ifpb.followup.api.resource;
 
-import com.ifpb.followup.api.service.RespostaAtividadeService;
-import com.ifpb.followup.model.RespostaAtividade;
+import com.ifpb.followup.api.service.AvaliacaoService;
+import com.ifpb.followup.model.Avaliacao;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -23,25 +23,25 @@ import javax.ws.rs.core.MediaType;
 
 /**
  *
- * Created by Rodger on Apr 9, 2019 7:07:50 PM
+ * Created by Rodger on Apr 8, 2019 10:80:54 AM
  */
 @Stateless
-@Path("res-atividade")
-public class ResourceRespostaAtividade {
+@Path("avaliacao")
+public class ResourceAvaliacao {
 
     @Inject
-    private RespostaAtividadeService service;
+    private AvaliacaoService service;
       
     @POST
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void novo(RespostaAtividade entity) {
+    public void novo(Avaliacao entity) {
         service.novo(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void editar(@PathParam("id") Long id, RespostaAtividade entity) {
+    public void editar(@PathParam("id") Long id, Avaliacao entity) {
         service.editar(entity);
     }
 
@@ -54,14 +54,21 @@ public class ResourceRespostaAtividade {
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public RespostaAtividade buscar(@PathParam("id") Long id) {
+    public Avaliacao buscar(@PathParam("id") Long id) {
         return service.buscar(id);
     }
 
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<RespostaAtividade> buscarTodos() {
+    public List<Avaliacao> buscarTodos() {
         return service.buscarTodos();
+    }
+
+    @GET
+    @Path("{de}/{ate}")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public List<Avaliacao> buscarEntre(@PathParam("de") Integer from, @PathParam("ate") Integer to) {
+        return service.buscarEntre(new int[]{from, to});
     }
 
     @GET
@@ -70,5 +77,4 @@ public class ResourceRespostaAtividade {
     public String quantidade() {
         return String.valueOf(service.quantidade());
     }
-
 }

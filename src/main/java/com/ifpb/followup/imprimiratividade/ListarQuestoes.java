@@ -5,8 +5,7 @@
  */
 package com.ifpb.followup.imprimiratividade;
 
-import com.ifpb.followup.model.Atividade;
-import com.ifpb.followup.model.Questao;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -27,7 +26,10 @@ public class ListarQuestoes {
 
     public List<AtividadeAluno> getAtividade(long id, long alunoId) {
 
-        String sql = "";
+        String sql = "SELECT a.matricula,a.nome, q.enunciado,q.alternativaA,q.alternativaB,q.alternativaC,q.alternativaD FROM questao q, aluno a "
+                + "WHERE a.id =?1 and q.id "
+                + "IN(" +
+                "SELECT q.id FROM questao q ,avaliacao_questao aq WHERE aq.avaliacao_id =?1)  ";
 
         Query query = em.createNativeQuery(sql, "AtividadeMapping");
         query.setParameter(1, id);

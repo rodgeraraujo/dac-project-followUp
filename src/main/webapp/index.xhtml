@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Login - followUP</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css"/>
+        <link rel="stylesheet" href="css/style.css"/>
+    </h:head>
+    <h:body>
+        <section class="section bg-color-primary full-height">
+            <div class="columns">
+                <div class='column'>
+                    <h:form class="form-login">
+                        <h2 class="title has-text-centered has-text-white">followUp</h2>
+                        <h5 class="is-size-5">Login</h5>
+                        <h:outputLabel for="email">Email</h:outputLabel>
+                        <h:inputText class="input" id="email" value="#"/>
+                        <h:outputLabel for="senha">Senha</h:outputLabel>
+                        <h:inputText class="input" id="senha" value="#"/>
+                        <h:selectOneRadio value = "#{userData.data}"> 
+                            <f:selectItem class="radio" itemValue = "ALUNO" itemLabel = "Aluno" /> 
+                            <f:selectItem class="radio" itemValue = "PROFESSOR" itemLabel = "Professor" />
+                        </h:selectOneRadio> 
+                        <h:commandButton class="button is-success is-medium is-fullwidth" action="#" value="Logar"/>
+                        
+                        <p class="has-text-centered">Não possui cadastro? <a class="has-text-white has-text-weight-semibold" href="cadastro.xhtml">Cadastre-se</a></p>
+                    </h:form>
+                </div>
+            </div>
+        </section>
+    </h:body>
+</html>
+

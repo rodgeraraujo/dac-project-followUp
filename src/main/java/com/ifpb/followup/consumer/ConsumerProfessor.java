@@ -26,7 +26,7 @@ import javax.ws.rs.core.Response;
 @Stateless
 public class ConsumerProfessor {
 
-    private final String url = "http://localhost:8080/followUP/api/professores";
+    private final String url = "http://localhost:8080/dac-project-followUp/api/professor";
     private final Client client = ClientBuilder.newClient();
     private final WebTarget professores = client.target(url);
 
@@ -69,10 +69,9 @@ public class ConsumerProfessor {
                 new StringReader(json)
         ).readArray();
 
-//        return array.stream()
-//                .map(obj -> new Professor((JsonObject) obj))
-//                .collect(Collectors.toList());
-        return null;
+        return array.stream()
+                .map(obj -> new Professor((JsonObject) obj))
+                .collect(Collectors.toList());
     }
 
     public Professor converter(String json) {
@@ -80,7 +79,6 @@ public class ConsumerProfessor {
                 new StringReader(json)
         ).readObject();
 
-//        return new Professor(jsonObject);
-        return null;
+        return new Professor(jsonObject);
     }
 }
