@@ -30,13 +30,9 @@ public class ConsumerProfessor {
     private final Client client = ClientBuilder.newClient();
     private final WebTarget professores = client.target(url);
 
-    public Professor salvar(Professor professor) {
+    public void salvar(Professor professor) {
         Response resposta = professores.request().
                 post(Entity.json(professor));
-
-        String json = resposta.readEntity(String.class);
-        return converter(json);
-
     }
 
     public Professor buscar(String id) {

@@ -58,6 +58,13 @@ public class ResourceAluno {
     public Aluno buscar(@PathParam("id") Long id) {
         return service.buscar(id);
     }
+    
+    @GET
+    @Path("auth/{email}")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public Aluno buscarPorEmail(@PathParam("email") String email) {
+        return service.buscarPorEmail(email);
+    }
 
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})

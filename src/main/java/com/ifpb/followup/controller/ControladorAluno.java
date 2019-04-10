@@ -26,7 +26,7 @@ public class ControladorAluno {
     private Aluno aluno = new Aluno();
 
     public String salvar() {
-        Aluno salvar = this.consumerAluno.salvar(this.aluno);
+        this.consumerAluno.salvar(this.aluno);
         this.aluno = new Aluno();
         return null;
     }
@@ -46,7 +46,7 @@ public class ControladorAluno {
     }
 
     public Aluno buscar(long id) {
-        return this.consumerAluno.buscar(String.valueOf(id));
+        return this.consumerAluno.buscar(id);
     }
 
     public Aluno getAluno() {

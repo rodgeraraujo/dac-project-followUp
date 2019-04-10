@@ -3,6 +3,7 @@ package com.ifpb.followup.model;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.json.JsonObject;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +20,7 @@ public class Professor implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String nome;
+    @Column(unique = true)
     private String email;
     private String senha;
     private int matricula;

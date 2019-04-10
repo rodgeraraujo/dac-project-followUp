@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.ifpb.followup.api.service;
 
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
@@ -40,6 +40,14 @@ public abstract class AbstractServiceFacade<T> {
 
     public T buscar(Object id) {
         return getEntityManager().find(entityClass, id);
+    }
+
+    public T buscarPorEmail(String email) {
+        CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<T> query = builder.createQuery(entityClass);
+        Root<T> root = query.from(entityClass);
+        query.select(root).where(builder.equal(root.get("email"), email));
+        return getEntityManager().createQuery(query).getSingleResult();
     }
 
     public List<T> buscarTodos() {

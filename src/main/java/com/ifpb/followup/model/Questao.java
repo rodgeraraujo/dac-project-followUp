@@ -2,10 +2,9 @@ package com.ifpb.followup.model;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.json.JsonObject;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,12 +31,20 @@ public class Questao implements Serializable{
     private String alternativaC;
     @Column(nullable = false)
     private String alternativaD;
-    @Enumerated(EnumType.STRING)
-    private TipoQuestao tipo;
     @Column(columnDefinition = "CHAR(1)", nullable = false)
     private char alternativaCorreta;
 
     public Questao() {
+    }
+
+    public Questao(JsonObject jsonObject) {
+        this.id = jsonObject.getJsonNumber("id").longValue();
+        this.enunciado = jsonObject.getString("enunciado");
+        this.alternativaA = jsonObject.getString("alternativaA");
+        this.alternativaB = jsonObject.getString("alternativaB");
+        this.alternativaC = jsonObject.getString("alternativaC");
+        this.alternativaD = jsonObject.getString("alternativaD");
+        this.alternativaCorreta = jsonObject.getString("alternativaCorreta").charAt(0);
     }
 
     public long getId() {
@@ -88,14 +95,6 @@ public class Questao implements Serializable{
         this.alternativaD = alternativaD;
     }
 
-    public TipoQuestao getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(TipoQuestao tipo) {
-        this.tipo = tipo;
-    }
-
     public char getAlternativaCorreta() {
         return alternativaCorreta;
     }
@@ -106,15 +105,14 @@ public class Questao implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 43 * hash + (int) (this.id ^ (this.id >>> 32));
-        hash = 43 * hash + Objects.hashCode(this.enunciado);
-        hash = 43 * hash + Objects.hashCode(this.alternativaA);
-        hash = 43 * hash + Objects.hashCode(this.alternativaB);
-        hash = 43 * hash + Objects.hashCode(this.alternativaC);
-        hash = 43 * hash + Objects.hashCode(this.alternativaD);
-        hash = 43 * hash + Objects.hashCode(this.tipo);
-        hash = 43 * hash + this.alternativaCorreta;
+        int hash = 3;
+        hash = 61 * hash + (int) (this.id ^ (this.id >>> 32));
+        hash = 61 * hash + Objects.hashCode(this.enunciado);
+        hash = 61 * hash + Objects.hashCode(this.alternativaA);
+        hash = 61 * hash + Objects.hashCode(this.alternativaB);
+        hash = 61 * hash + Objects.hashCode(this.alternativaC);
+        hash = 61 * hash + Objects.hashCode(this.alternativaD);
+        hash = 61 * hash + this.alternativaCorreta;
         return hash;
     }
 
@@ -151,15 +149,12 @@ public class Questao implements Serializable{
         if (!Objects.equals(this.alternativaD, other.alternativaD)) {
             return false;
         }
-        if (this.tipo != other.tipo) {
-            return false;
-        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Questao{" + "id=" + id + ", enunciado=" + enunciado + ", alternativaA=" + alternativaA + ", alternativaB=" + alternativaB + ", alternativaC=" + alternativaC + ", alternativaD=" + alternativaD + ", tipo=" + tipo + ", alternativaCorreta=" + alternativaCorreta + '}';
+        return "Questao{" + "id=" + id + ", enunciado=" + enunciado + ", alternativaA=" + alternativaA + ", alternativaB=" + alternativaB + ", alternativaC=" + alternativaC + ", alternativaD=" + alternativaD + ", alternativaCorreta=" + alternativaCorreta + '}';
     }
     
 }

@@ -30,17 +30,20 @@ public class ConsumerAluno {
     private final Client client = ClientBuilder.newClient();
     private final WebTarget alunos = client.target(url);
 
-    public Aluno salvar(Aluno aluno) {
+    public void salvar(Aluno aluno) {
         Response resposta = alunos.request().
                 post(Entity.json(aluno));
-
-        String json = resposta.readEntity(String.class);
-        return converter(json);
-
     }
 
-    public Aluno buscar(String id) {
+    public Aluno buscar(long id) {
         WebTarget alunocomId = alunos.path("{id}").resolveTemplate("id", id);
+        Response resposta = alunocomId.request().get();
+        String corpo = resposta.readEntity(String.class);
+        return converter(corpo);
+    }
+    
+    public Aluno buscarPorEmail(String email){
+        WebTarget alunocomId = alunos.path("{email}").resolveTemplate("email", email);
         Response resposta = alunocomId.request().get();
         String corpo = resposta.readEntity(String.class);
         return converter(corpo);

@@ -9,7 +9,7 @@ import com.ifpb.followup.imprimiratividade.ImprimirAtividade;
 import com.ifpb.followup.imprimiratividade.ListarQuestoes;
 import com.ifpb.followup.imprimiratividade.AtividadePDF;
 import com.ifpb.followup.model.Aluno;
-import com.ifpb.followup.model.Atividade;
+import com.ifpb.followup.model.Avaliacao;
 import java.io.IOException;
 import java.io.Serializable;
 
@@ -22,11 +22,11 @@ import javax.inject.Named;
  */
 @Named
 @ViewScoped
-public class ControladorAtividade implements Serializable {
+public class ControladorAvaliacao implements Serializable {
 
     private final ListarQuestoes questoes = new ListarQuestoes();
     private ImprimirAtividade atividade;
-    private Atividade a = new Atividade();
+    private Avaliacao a = new Avaliacao();
     private Aluno aluno = new Aluno();
 
     public void imprimirtividade() throws IOException {
@@ -44,11 +44,11 @@ public class ControladorAtividade implements Serializable {
         this.atividade = atividade;
     }
 
-    public Atividade getA() {
+    public Avaliacao getA() {
         return a;
     }
 
-    public void setA(Atividade a) {
+    public void setA(Avaliacao a) {
         this.a = a;
     }
 
