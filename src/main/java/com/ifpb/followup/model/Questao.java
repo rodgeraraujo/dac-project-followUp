@@ -8,7 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -34,6 +36,9 @@ public class Questao implements Serializable{
     private String alternativaD;
     @Column(columnDefinition = "CHAR(1)", nullable = false)
     private char alternativaCorreta;
+    @ManyToOne
+    private Professor professor;
+    
     
     public Questao() {
     }
@@ -46,6 +51,7 @@ public class Questao implements Serializable{
         this.alternativaC = jsonObject.getString("alternativaC");
         this.alternativaD = jsonObject.getString("alternativaD");
         this.alternativaCorreta = jsonObject.getString("alternativaCorreta").charAt(0);
+        //professor
     }
 
     public long getId() {
@@ -104,16 +110,25 @@ public class Questao implements Serializable{
         this.alternativaCorreta = alternativaCorreta;
     }
 
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 61 * hash + (int) (this.id ^ (this.id >>> 32));
-        hash = 61 * hash + Objects.hashCode(this.enunciado);
-        hash = 61 * hash + Objects.hashCode(this.alternativaA);
-        hash = 61 * hash + Objects.hashCode(this.alternativaB);
-        hash = 61 * hash + Objects.hashCode(this.alternativaC);
-        hash = 61 * hash + Objects.hashCode(this.alternativaD);
-        hash = 61 * hash + this.alternativaCorreta;
+        hash = 47 * hash + (int) (this.id ^ (this.id >>> 32));
+        hash = 47 * hash + Objects.hashCode(this.enunciado);
+        hash = 47 * hash + Objects.hashCode(this.alternativaA);
+        hash = 47 * hash + Objects.hashCode(this.alternativaB);
+        hash = 47 * hash + Objects.hashCode(this.alternativaC);
+        hash = 47 * hash + Objects.hashCode(this.alternativaD);
+        hash = 47 * hash + this.alternativaCorreta;
+        hash = 47 * hash + Objects.hashCode(this.professor);
         return hash;
     }
 
@@ -150,12 +165,15 @@ public class Questao implements Serializable{
         if (!Objects.equals(this.alternativaD, other.alternativaD)) {
             return false;
         }
+        if (!Objects.equals(this.professor, other.professor)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Questao{" + "id=" + id + ", enunciado=" + enunciado + ", alternativaA=" + alternativaA + ", alternativaB=" + alternativaB + ", alternativaC=" + alternativaC + ", alternativaD=" + alternativaD + ", alternativaCorreta=" + alternativaCorreta + '}';
+        return "Questao{" + "id=" + id + ", enunciado=" + enunciado + ", alternativaA=" + alternativaA + ", alternativaB=" + alternativaB + ", alternativaC=" + alternativaC + ", alternativaD=" + alternativaD + ", alternativaCorreta=" + alternativaCorreta + ", professor=" + professor + '}';
     }
     
 }

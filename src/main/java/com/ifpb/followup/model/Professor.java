@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.json.JsonObject;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,11 +28,8 @@ public class Professor implements Serializable {
     private String email;
     private String senha;
     private int matricula;
-    @OneToMany
-    private List<Questao> questoes;
 
     public Professor() {
-        this.questoes = new ArrayList<>();
     }
 
     public Professor(JsonObject jsonObject) {
@@ -82,23 +80,14 @@ public class Professor implements Serializable {
         this.matricula = matricula;
     }
 
-    public List<Questao> getQuestoes() {
-        return questoes;
-    }
-
-    public void setQuestoes(List<Questao> questoes) {
-        this.questoes = questoes;
-    }
-
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 83 * hash + (int) (this.id ^ (this.id >>> 32));
-        hash = 83 * hash + Objects.hashCode(this.nome);
-        hash = 83 * hash + Objects.hashCode(this.email);
-        hash = 83 * hash + Objects.hashCode(this.senha);
-        hash = 83 * hash + this.matricula;
-        hash = 83 * hash + Objects.hashCode(this.questoes);
+        hash = 23 * hash + (int) (this.id ^ (this.id >>> 32));
+        hash = 23 * hash + Objects.hashCode(this.nome);
+        hash = 23 * hash + Objects.hashCode(this.email);
+        hash = 23 * hash + Objects.hashCode(this.senha);
+        hash = 23 * hash + this.matricula;
         return hash;
     }
 
@@ -129,15 +118,12 @@ public class Professor implements Serializable {
         if (!Objects.equals(this.senha, other.senha)) {
             return false;
         }
-        if (!Objects.equals(this.questoes, other.questoes)) {
-            return false;
-        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Professor{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", matricula=" + matricula + ", questoes=" + questoes + '}';
+        return "Professor{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", matricula=" + matricula + '}';
     }
-    
+
 }

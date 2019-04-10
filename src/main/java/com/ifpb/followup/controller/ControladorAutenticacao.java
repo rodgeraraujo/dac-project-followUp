@@ -4,6 +4,7 @@ import com.ifpb.followup.consumer.ConsumerAluno;
 import com.ifpb.followup.consumer.ConsumerProfessor;
 import com.ifpb.followup.model.Aluno;
 import com.ifpb.followup.model.Professor;
+import java.io.IOException;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -50,7 +51,7 @@ public class ControladorAutenticacao implements Serializable {
         } else if (tipo.equals(TIPO_PROFESSOR)) {
             professor = consumerProfessor.buscarPorEmail(email);
             System.out.println("Professor: " + professor.toString());
-            if (email.equals("professor") && senha.equals("professor")) {
+            if (email.equals(professor.getEmail()) && senha.equals(professor.getSenha())) {
                 session.setAttribute("usuario", professor);
                 session.setAttribute("tipoUsuario", "professor");
                 return TIPO_PROFESSOR.toLowerCase() + "/index.xhtml?faces-redirect=true";
@@ -60,8 +61,9 @@ public class ControladorAutenticacao implements Serializable {
     }
 
     public String logout() {
-        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "/../index.xhtml?faces-redirect=true";
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.getExternalContext().invalidateSession();
+        return "/index.xhtml?faces-redirect=true";
     }
 
     public String getEmail() {

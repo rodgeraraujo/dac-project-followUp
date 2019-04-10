@@ -58,6 +58,7 @@ public class ConsumerQuestao {
         return converter(json);
     }
 
+    @SuppressWarnings("unchecked")
     public List<Questao> questoes() {
         Response resposta = questoes.request().get();
         String json = resposta.readEntity(String.class);

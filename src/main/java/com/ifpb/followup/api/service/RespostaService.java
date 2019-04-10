@@ -13,7 +13,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class RespostaService extends AbstractServiceFacade<Resposta> {
 
-    @PersistenceContext(unitName = "followupPU")
+    @PersistenceContext(unitName = "followUp")
     private EntityManager em;
 
     public RespostaService() {

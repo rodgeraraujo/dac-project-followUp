@@ -29,14 +29,14 @@ public class ResourceProfessor {
     private ProfessorService service;
       
     @POST
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
     public void novo(Professor entity) {
         service.novo(entity);
     }
 
     @PUT
     @Path("{id}")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
     public void editar(@PathParam("id") Long id, Professor entity) {
         service.editar(entity);
     }
@@ -49,27 +49,27 @@ public class ResourceProfessor {
 
     @GET
     @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public Professor buscar(@PathParam("id") Long id) {
         return service.buscar(id);
     }
     
     @GET
     @Path("auth/{email}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public Professor buscarPorEmail(@PathParam("email") String email) {
         return service.buscarPorEmail(email);
     }
 
     @GET
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public List<Professor> buscarTodos() {
         return service.buscarTodos();
     }
 
     @GET
     @Path("{de}/{ate}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public List<Professor> buscarEntre(@PathParam("de") Integer from, @PathParam("ate") Integer to) {
         return service.buscarEntre(new int[]{from, to});
     }

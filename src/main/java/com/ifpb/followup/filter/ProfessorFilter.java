@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Amanda
  */
-//@WebFilter(urlPatterns = {"/professor/*"})
+@WebFilter(urlPatterns = {"/professor/*"})
 public class ProfessorFilter implements Filter{
 
     @Override

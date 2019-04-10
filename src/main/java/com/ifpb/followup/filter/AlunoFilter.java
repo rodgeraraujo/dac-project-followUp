@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Amanda
  */
-//@WebFilter(urlPatterns = {"/aluno/*"})
+@WebFilter(urlPatterns = {"/aluno/*"})
 public class AlunoFilter implements Filter{
 
     @Override

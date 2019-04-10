@@ -33,14 +33,14 @@ public class ResourceResposta {
     private RespostaService service;
       
     @POST
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
     public void novo(Resposta entity) {
         service.novo(entity);
     }
 
     @PUT
     @Path("{id}")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
     public void editar(@PathParam("id") Long id, Resposta entity) {
         service.editar(entity);
     }
@@ -53,13 +53,13 @@ public class ResourceResposta {
 
     @GET
     @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public Resposta buscar(@PathParam("id") Long id) {
         return service.buscar(id);
     }
 
     @GET
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public List<Resposta> buscarTodos() {
         return service.buscarTodos();
     }

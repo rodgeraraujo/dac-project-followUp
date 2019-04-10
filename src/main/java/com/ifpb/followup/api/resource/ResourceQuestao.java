@@ -27,14 +27,14 @@ public class ResourceQuestao {
     private QuestaoService service;
       
     @POST
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
     public void novo(Questao entity) {
         service.novo(entity);
     }
 
     @PUT
     @Path("{id}")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
     public void editar(@PathParam("id") Long id, Questao entity) {
         service.editar(entity);
     }
@@ -47,20 +47,20 @@ public class ResourceQuestao {
 
     @GET
     @Path("{id}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public Questao buscar(@PathParam("id") Long id) {
         return service.buscar(id);
     }
 
     @GET
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public List<Questao> buscarTodos() {
         return service.buscarTodos();
     }
 
     @GET
     @Path("{de}/{ate}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
     public List<Questao> buscarEntre(@PathParam("de") Integer from, @PathParam("ate") Integer to) {
         return service.buscarEntre(new int[]{from, to});
     }

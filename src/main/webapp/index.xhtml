@@ -19,7 +19,7 @@
                         <h:outputLabel for="email">Email</h:outputLabel>
                         <h:inputText class="input" id="email" value="#{controladorAutenticacao.email}"/>
                         <h:outputLabel for="senha">Senha</h:outputLabel>
-                        <h:inputText class="input" id="senha" value="#{controladorAutenticacao.senha}"/>
+                        <h:inputSecret class="input" id="senha" value="#{controladorAutenticacao.senha}"/>
                         <h:selectOneRadio value = "#{controladorAutenticacao.tipo}"> 
                             <f:selectItem class="radio" itemValue = "#{controladorAutenticacao.TIPO_ALUNO}" itemLabel = "Aluno" /> 
                             <f:selectItem class="radio" itemValue = "#{controladorAutenticacao.TIPO_PROFESSOR}" itemLabel = "Professor" />

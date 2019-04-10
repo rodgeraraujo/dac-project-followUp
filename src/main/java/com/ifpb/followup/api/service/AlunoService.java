@@ -19,7 +19,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class AlunoService extends AbstractServiceFacade<Aluno> {
 
-    @PersistenceContext(unitName = "followupPU")
+    @PersistenceContext(unitName = "followUp")
     private EntityManager em;
 
     public AlunoService() {
