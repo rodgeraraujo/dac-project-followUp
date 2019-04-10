@@ -43,7 +43,7 @@ public class ConsumerProfessor {
     }
     
     public Professor buscarPorEmail(String email){
-        WebTarget professorComId = professores.path("{email}").resolveTemplate("email", email);
+        WebTarget professorComId = professores.path("auth/{email}").resolveTemplate("email", email);
         Response resposta =  professorComId.request().get();
         String corpo = resposta.readEntity(String.class);
         return converter(corpo);

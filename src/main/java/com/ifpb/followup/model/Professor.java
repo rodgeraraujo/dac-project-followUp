@@ -1,6 +1,7 @@
 package com.ifpb.followup.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.json.JsonObject;
@@ -30,6 +31,7 @@ public class Professor implements Serializable {
     private List<Questao> questoes;
 
     public Professor() {
+        this.questoes = new ArrayList<>();
     }
 
     public Professor(JsonObject jsonObject) {

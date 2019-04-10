@@ -39,12 +39,9 @@ public class ControladorAutenticacao implements Serializable {
 
         FacesContext context = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
-        session.setAttribute("usuario", "user");
-        session.setAttribute("tipoUsuario", "professor");
 
         if (tipo.equals(TIPO_ALUNO)) {
             aluno = consumerAluno.buscarPorEmail(email);
-            System.out.println("Aluno: " + aluno.toString());
             if (email.equals(aluno.getEmail()) && senha.equals(aluno.getSenha())) {
                 session.setAttribute("usuario", aluno);
                 session.setAttribute("tipoUsuario", "aluno");
@@ -52,8 +49,7 @@ public class ControladorAutenticacao implements Serializable {
             }
         } else if (tipo.equals(TIPO_PROFESSOR)) {
             professor = consumerProfessor.buscarPorEmail(email);
-            session.setAttribute("usuario", professor);
-                session.setAttribute("tipoUsuario", "professor");
+            System.out.println("Professor: " + professor.toString());
             if (email.equals("professor") && senha.equals("professor")) {
                 session.setAttribute("usuario", professor);
                 session.setAttribute("tipoUsuario", "professor");
