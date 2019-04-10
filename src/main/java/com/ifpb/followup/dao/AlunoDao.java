@@ -27,9 +27,7 @@ public class AlunoDao implements AlunoIF{
         em.persist(aluno);
         return aluno;
     }
-
     
-
     @Override
     public Aluno buscar(long id) {
         Aluno aluno = em.find(Aluno.class, id);
@@ -38,8 +36,6 @@ public class AlunoDao implements AlunoIF{
         }
         return aluno;
     }
-
-    
 
     @Override
     public boolean delete(long id) {
@@ -69,6 +65,4 @@ public class AlunoDao implements AlunoIF{
             .getResultList();
     }
   
-  
-
 }

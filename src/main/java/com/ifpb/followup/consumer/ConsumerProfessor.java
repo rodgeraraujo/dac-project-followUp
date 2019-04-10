@@ -26,7 +26,7 @@ import javax.ws.rs.core.Response;
 @Stateless
 public class ConsumerProfessor {
 
-    private final String url = "http://localhost:8080/dac-project-followUp/api/professores";
+    private final String url = "http://localhost:8080/dac-project-followUp/api/professor";
     private final Client client = ClientBuilder.newClient();
     private final WebTarget professores = client.target(url);
 

@@ -4,8 +4,8 @@ import com.ifpb.followup.consumer.ConsumerAluno;
 import com.ifpb.followup.consumer.ConsumerProfessor;
 import com.ifpb.followup.model.Aluno;
 import com.ifpb.followup.model.Professor;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -24,10 +24,10 @@ public class ControladorCadastro {
     private String senha;
     private int matricula;
     
-    @Inject
+    @EJB
     ConsumerAluno consumerAluno;
     
-    @Inject
+    @EJB
     ConsumerProfessor consumerProfessor;
 
     public String cadastrar() {
