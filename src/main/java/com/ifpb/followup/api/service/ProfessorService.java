@@ -13,7 +13,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class ProfessorService extends AbstractServiceFacade<Professor> {
 
-    @PersistenceContext(unitName = "followUp")
+    @PersistenceContext(unitName = "followupPU")
     private EntityManager em;
 
     public ProfessorService() {

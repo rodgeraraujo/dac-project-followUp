@@ -19,7 +19,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class AvaliacaoService extends AbstractServiceFacade<Avaliacao> {
 
-    @PersistenceContext(unitName = "followUp")
+    @PersistenceContext(unitName = "followupPU")
     private EntityManager em;
 
     public AvaliacaoService() {
