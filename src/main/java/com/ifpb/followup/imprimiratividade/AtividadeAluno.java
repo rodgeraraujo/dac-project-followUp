@@ -21,7 +21,7 @@ import javax.persistence.SqlResultSetMapping;
                 columns = {
                     @ColumnResult(name = "aluno")
                     ,
-                   @ColumnResult(name = "matricula", type = Integer.class)
+                   @ColumnResult(name = "matricula", type = Long.class)
                     ,
                    @ColumnResult(name = "enunciado")
                     ,
@@ -47,7 +47,7 @@ public class AtividadeAluno implements Serializable {
     public AtividadeAluno() {
     }
 
-    public AtividadeAluno(String aluno, long matricula, String enunciado,
+    public AtividadeAluno(long matricula,String aluno,  String enunciado,
             String alternativaA, String alternativaB, String alternativaC,String alternativaD) {
         this.aluno = aluno;
         this.matricula = matricula;
