@@ -2,8 +2,11 @@ package com.ifpb.followup.model;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.json.JsonObject;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -11,17 +14,30 @@ import javax.persistence.Id;
  * @author Amanda
  */
 @Entity
-public class Aluno implements Serializable{
-    
+public class Aluno implements Serializable {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String nome;
+    @Column(unique = true)
     private String email;
     private String senha;
     private int matricula;
 
     public Aluno() {
+    }
+
+    public static Aluno empty() {
+        return new Aluno();
+    }
+
+    public Aluno(JsonObject jsonObject) {
+        this.id = jsonObject.getJsonNumber("id").longValue();
+        this.nome = jsonObject.getString("nome");
+        this.email = jsonObject.getString("email");
+        this.senha = jsonObject.getString("senha");
+        this.matricula = jsonObject.getInt("matricula");
     }
 
     public long getId() {
@@ -107,7 +123,8 @@ public class Aluno implements Serializable{
 
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", matricula=" + matricula + '}';
+        return "Usuario{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", "
+                + "senha=" + senha + ", matricula=" + matricula + '}';
     }
-    
+
 }

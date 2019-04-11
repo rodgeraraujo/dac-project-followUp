@@ -17,14 +17,14 @@
                         <h2 class="title has-text-centered has-text-white">followUp</h2>
                         <h5 class="is-size-5">Login</h5>
                         <h:outputLabel for="email">Email</h:outputLabel>
-                        <h:inputText class="input" id="email" value="#"/>
+                        <h:inputText class="input" id="email" value="#{controladorAutenticacao.email}"/>
                         <h:outputLabel for="senha">Senha</h:outputLabel>
-                        <h:inputText class="input" id="senha" value="#"/>
-                        <h:selectOneRadio value = "#{userData.data}"> 
-                            <f:selectItem class="radio" itemValue = "ALUNO" itemLabel = "Aluno" /> 
-                            <f:selectItem class="radio" itemValue = "PROFESSOR" itemLabel = "Professor" />
+                        <h:inputSecret class="input" id="senha" value="#{controladorAutenticacao.senha}"/>
+                        <h:selectOneRadio value = "#{controladorAutenticacao.tipo}"> 
+                            <f:selectItem class="radio" itemValue = "#{controladorAutenticacao.TIPO_ALUNO}" itemLabel = "Aluno" /> 
+                            <f:selectItem class="radio" itemValue = "#{controladorAutenticacao.TIPO_PROFESSOR}" itemLabel = "Professor" />
                         </h:selectOneRadio> 
-                        <h:commandButton class="button is-success is-medium is-fullwidth" action="#" value="Logar"/>
+                        <h:commandButton class="button is-success is-medium is-fullwidth" action="#{controladorAutenticacao.login()}" value="Logar"/>
                         
                         <p class="has-text-centered">Não possui cadastro? <a class="has-text-white has-text-weight-semibold" href="cadastro.xhtml">Cadastre-se</a></p>
                     </h:form>

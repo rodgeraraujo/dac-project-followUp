@@ -1,6 +1,7 @@
 package com.ifpb.followup.model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -19,8 +20,9 @@ public class Avaliacao implements Serializable{
     @Id
     @GeneratedValue
     private long id;
+    private String titulo;
     @ManyToMany
-    private Questao questao;
+    private List<Questao> questao;
     @Enumerated(EnumType.STRING)
     private TipoAvaliacao tipo;
 
@@ -35,11 +37,19 @@ public class Avaliacao implements Serializable{
         this.id = id;
     }
 
-    public Questao getQuestao() {
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+    
+    public List<Questao> getQuestao() {
         return questao;
     }
 
-    public void setQuestao(Questao questao) {
+    public void setQuestao(List<Questao> questao) {
         this.questao = questao;
     }
 
@@ -53,10 +63,11 @@ public class Avaliacao implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 79 * hash + (int) (this.id ^ (this.id >>> 32));
-        hash = 79 * hash + Objects.hashCode(this.questao);
-        hash = 79 * hash + Objects.hashCode(this.tipo);
+        int hash = 7;
+        hash = 31 * hash + (int) (this.id ^ (this.id >>> 32));
+        hash = 31 * hash + Objects.hashCode(this.titulo);
+        hash = 31 * hash + Objects.hashCode(this.questao);
+        hash = 31 * hash + Objects.hashCode(this.tipo);
         return hash;
     }
 
@@ -75,6 +86,9 @@ public class Avaliacao implements Serializable{
         if (this.id != other.id) {
             return false;
         }
+        if (!Objects.equals(this.titulo, other.titulo)) {
+            return false;
+        }
         if (!Objects.equals(this.questao, other.questao)) {
             return false;
         }
@@ -86,8 +100,7 @@ public class Avaliacao implements Serializable{
 
     @Override
     public String toString() {
-        return "Avaliacao{" + "id=" + id + ", questao=" + questao + ", tipo=" + tipo + '}';
+        return "Avaliacao{" + "id=" + id + ", titulo=" + titulo + ", questao=" + questao + ", tipo=" + tipo + '}';
     }
-    
-    
+
 }

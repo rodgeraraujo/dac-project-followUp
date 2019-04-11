@@ -17,23 +17,23 @@
                         <h2 class="title has-text-centered has-text-white">followUp</h2>
                         <h5 class="is-size-5">Cadastro</h5>
                         <h:outputLabel for="nome">Nome</h:outputLabel>
-                        <h:inputText class="input" id="nome" value="#"/>
+                        <h:inputText class="input" id="nome" value="#{controladorCadastro.nome}"/>
                         
                         <h:outputLabel for="matricula">Matricula</h:outputLabel>
-                        <h:inputText class="input" id="matricula" value="#"/>
+                        <h:inputText class="input" id="matricula" value="#{controladorCadastro.matricula}"/>
                         
                         <h:outputLabel for="email">Email</h:outputLabel>
-                        <h:inputText class="input" id="email" value="#"/>
+                        <h:inputText class="input" id="email" value="#{controladorCadastro.email}"/>
                         
                         <h:outputLabel for="senha">Senha</h:outputLabel>
-                        <h:inputText class="input" id="senha" value="#"/>
+                        <h:inputSecret class="input" id="senha" value="#{controladorCadastro.senha}"/>
                         
-                        <h:selectOneRadio value = "#{userData.data}"> 
+                        <h:selectOneRadio value = "#{controladorCadastro.tipo}"> 
                             <f:selectItem class="radio" itemValue = "ALUNO" itemLabel = "Aluno" /> 
                             <f:selectItem class="radio" itemValue = "PROFESSOR" itemLabel = "Professor" />
                         </h:selectOneRadio> 
                         
-                        <h:commandButton class="button is-success is-medium is-fullwidth" action="#" value="Cadastrar"/>
+                        <h:commandButton class="button is-success is-medium is-fullwidth" action="#{controladorCadastro.cadastrar()}" value="Cadastrar"/>
                         <p class="has-text-centered">Já é cadastrado? <a class="has-text-white has-text-weight-semibold" href="index.xhtml">Login</a></p>
                     </h:form>
                 </div>

@@ -1,23 +1,31 @@
 package com.ifpb.followup.model;
 
 import java.io.Serializable;
+import java.io.StringReader;
 import java.util.Objects;
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonObject;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Amanda
  */
 @Entity
+@XmlRootElement
 public class Questao implements Serializable{
     
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column(nullable = false)
     private String enunciado;
@@ -29,12 +37,24 @@ public class Questao implements Serializable{
     private String alternativaC;
     @Column(nullable = false)
     private String alternativaD;
-    @Enumerated(EnumType.STRING)
-    private TipoQuestao tipo;
     @Column(columnDefinition = "CHAR(1)", nullable = false)
     private char alternativaCorreta;
-
+    @ManyToOne
+    private Professor professor;
+    
+    
     public Questao() {
+    }
+
+    public Questao(JsonObject jsonObject) {
+        this.id = jsonObject.getJsonNumber("id").longValue();
+        this.enunciado = jsonObject.getString("enunciado");
+        this.alternativaA = jsonObject.getString("alternativaA");
+        this.alternativaB = jsonObject.getString("alternativaB");
+        this.alternativaC = jsonObject.getString("alternativaC");
+        this.alternativaD = jsonObject.getString("alternativaD");
+        this.alternativaCorreta = jsonObject.getString("alternativaCorreta").charAt(0);
+        //professor
     }
 
     public long getId() {
@@ -85,14 +105,6 @@ public class Questao implements Serializable{
         this.alternativaD = alternativaD;
     }
 
-    public TipoQuestao getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(TipoQuestao tipo) {
-        this.tipo = tipo;
-    }
-
     public char getAlternativaCorreta() {
         return alternativaCorreta;
     }
@@ -101,17 +113,25 @@ public class Questao implements Serializable{
         this.alternativaCorreta = alternativaCorreta;
     }
 
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 43 * hash + (int) (this.id ^ (this.id >>> 32));
-        hash = 43 * hash + Objects.hashCode(this.enunciado);
-        hash = 43 * hash + Objects.hashCode(this.alternativaA);
-        hash = 43 * hash + Objects.hashCode(this.alternativaB);
-        hash = 43 * hash + Objects.hashCode(this.alternativaC);
-        hash = 43 * hash + Objects.hashCode(this.alternativaD);
-        hash = 43 * hash + Objects.hashCode(this.tipo);
-        hash = 43 * hash + this.alternativaCorreta;
+        int hash = 3;
+        hash = 47 * hash + (int) (this.id ^ (this.id >>> 32));
+        hash = 47 * hash + Objects.hashCode(this.enunciado);
+        hash = 47 * hash + Objects.hashCode(this.alternativaA);
+        hash = 47 * hash + Objects.hashCode(this.alternativaB);
+        hash = 47 * hash + Objects.hashCode(this.alternativaC);
+        hash = 47 * hash + Objects.hashCode(this.alternativaD);
+        hash = 47 * hash + this.alternativaCorreta;
+        hash = 47 * hash + Objects.hashCode(this.professor);
         return hash;
     }
 
@@ -148,7 +168,7 @@ public class Questao implements Serializable{
         if (!Objects.equals(this.alternativaD, other.alternativaD)) {
             return false;
         }
-        if (this.tipo != other.tipo) {
+        if (!Objects.equals(this.professor, other.professor)) {
             return false;
         }
         return true;
@@ -156,7 +176,7 @@ public class Questao implements Serializable{
 
     @Override
     public String toString() {
-        return "Questao{" + "id=" + id + ", enunciado=" + enunciado + ", alternativaA=" + alternativaA + ", alternativaB=" + alternativaB + ", alternativaC=" + alternativaC + ", alternativaD=" + alternativaD + ", tipo=" + tipo + ", alternativaCorreta=" + alternativaCorreta + '}';
+        return "Questao{" + "id=" + id + ", enunciado=" + enunciado + ", alternativaA=" + alternativaA + ", alternativaB=" + alternativaB + ", alternativaC=" + alternativaC + ", alternativaD=" + alternativaD + ", alternativaCorreta=" + alternativaCorreta + ", professor=" + professor + '}';
     }
     
 }

@@ -1,27 +1,43 @@
 package com.ifpb.followup.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import javax.json.JsonObject;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author Amanda
  */
 @Entity
-public class Professor implements Serializable{
-    
+public class Professor implements Serializable {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String nome;
+    @Column(unique = true)
     private String email;
     private String senha;
     private int matricula;
 
     public Professor() {
+    }
+
+    public Professor(JsonObject jsonObject) {
+        this.id = jsonObject.getJsonNumber("id").longValue();
+        this.nome = jsonObject.getString("nome");
+        this.email = jsonObject.getString("email");
+        this.senha = jsonObject.getString("senha");
+        this.matricula = jsonObject.getInt("matricula");
     }
 
     public long getId() {
@@ -66,12 +82,12 @@ public class Professor implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 79 * hash + (int) (this.id ^ (this.id >>> 32));
-        hash = 79 * hash + Objects.hashCode(this.nome);
-        hash = 79 * hash + Objects.hashCode(this.email);
-        hash = 79 * hash + Objects.hashCode(this.senha);
-        hash = 79 * hash + this.matricula;
+        int hash = 3;
+        hash = 23 * hash + (int) (this.id ^ (this.id >>> 32));
+        hash = 23 * hash + Objects.hashCode(this.nome);
+        hash = 23 * hash + Objects.hashCode(this.email);
+        hash = 23 * hash + Objects.hashCode(this.senha);
+        hash = 23 * hash + this.matricula;
         return hash;
     }
 
@@ -109,5 +125,5 @@ public class Professor implements Serializable{
     public String toString() {
         return "Professor{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", matricula=" + matricula + '}';
     }
-    
+
 }
