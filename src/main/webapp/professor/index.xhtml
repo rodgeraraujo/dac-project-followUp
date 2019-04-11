@@ -18,7 +18,83 @@
                     </div>
                 </div>
 
-               
+                <div class="section">
+                    <h4 class="is-size-4">Editar Questão</h4>
+                    <h:form rendered="#{controladorQuestao.editando}">
+                        <h:inputHidden value="#{controladorQuestao.questao.id}"/>
+                        <div class="field">
+                            <div class="control">
+                                <h:outputLabel class="label" for="enunciado">Enunciado</h:outputLabel>
+                                <h:inputText class="input" id="enunciado" value="#{controladorQuestao.questao.enunciado}"/>
+                            </div>
+                        </div>
+                        <!-- BOX ALTERNATIVA A -->
+                        <div class="box">
+                            <article class="media">
+                                <div class="media-left">
+                                    <div class="box-alternativa">
+                                        <h:outputLabel class="title" for="alternativaA">A</h:outputLabel>
+                                    </div>
+                                </div>
+                                <div class="media-content">
+                                    <h:inputText class="input" id="alternativaA" value="#{controladorQuestao.questao.alternativaA}"/>
+                                </div>
+                            </article>
+
+                            <!-- BOX ALTERNATIVA B -->
+
+                            <article class="media">
+                                <div class="media-left">
+                                    <div class="box-alternativa">
+                                        <h:outputLabel class="title" for="alternativaB">B</h:outputLabel>
+                                    </div>
+                                </div>
+                                <div class="media-content">
+                                    <h:inputText class="input" id="alternativaB" value="#{controladorQuestao.questao.alternativaB}"/>
+                                </div>
+                            </article>
+
+                            <!-- BOX ALTERNATIVA C -->
+
+                            <article class="media">
+                                <div class="media-left">
+                                    <div class="box-alternativa">
+                                        <h:outputLabel class="title" for="alternativaC">C</h:outputLabel>
+                                    </div>
+                                </div>
+                                <div class="media-content">
+                                    <h:inputText class="input" id="alternativaC" value="#{controladorQuestao.questao.alternativaC}"/>
+                                </div>
+                            </article>
+
+                            <!-- BOX ALTERNATIVA D -->
+
+                            <article class="media">
+                                <div class="media-left">
+                                    <div class="box-alternativa">
+                                        <h:outputLabel class="title" for="alternativaD">D</h:outputLabel>
+                                    </div>
+                                </div>
+                                <div class="media-content">
+                                    <h:inputText class="input" id="alternativaD" value="#{controladorQuestao.questao.alternativaD}"/>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <h:outputLabel for="correta">Alternativa correta: </h:outputLabel>
+                                <h:selectOneMenu id="correta" class="select" value = "#{controladorQuestao.questao.alternativaCorreta}"> 
+                                    <f:selectItem itemValue = "A" itemLabel = "A" /> 
+                                    <f:selectItem itemValue = "B" itemLabel = "B" /> 
+                                    <f:selectItem itemValue = "C" itemLabel = "C" /> 
+                                    <f:selectItem itemValue = "D" itemLabel = "D" /> 
+                                </h:selectOneMenu> 	
+                            </div>
+                        </div>
+                        <h:commandButton class="button is-success is-medium is-fullwidth" action="#{controladorQuestao.atualizar()}" value="Adicionar"/>
+                    </h:form>
+                </div>
+
                 <c:forEach var="questao" items="#{controladorQuestao.listar()}">
                     <h:form class="box">
                         <div class="columns">
@@ -31,17 +107,17 @@
                             <div class="column is-2">
                                 <div class="columns">
                                     <div class="column">
-                                        <h:commandLink class="button is-info is-fullwidth">Editar</h:commandLink>
+                                        <h:commandLink class="button is-info is-fullwidth" action="#{controladorQuestao.editar(questao)}">Editar</h:commandLink>
                                     </div>
                                     <div class="column">
-                                        <h:commandLink class="button is-danger is-fullwidth">Remover</h:commandLink>
+                                        <h:commandLink class="button is-danger is-fullwidth" action="#{controladorQuestao.remover(questao.id)}">Remover</h:commandLink>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </h:form>
                 </c:forEach>
-               
+
             </div>
         </section>
 

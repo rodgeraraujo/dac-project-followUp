@@ -42,23 +42,22 @@ public class ConsumerQuestao {
         return converter(corpo);
     }
 
-    public void delete(String id) {
+    public void delete(long id) {
         WebTarget questaoComId = questoes.path("{id}")
                 .resolveTemplate("id", id);
         Response delete = questaoComId.request().delete();
 
     }
 
-    public Questao atualizar(Questao questao) {
+    public void atualizar(Questao questao) {
         WebTarget questaoComId = questoes.path("{id}")
                 .resolveTemplate("id", questao.getId());
         Response resposta = questaoComId.request().
                 put(Entity.json(questao));
         String json = resposta.readEntity(String.class);
-        return converter(json);
+//        return converter(json);
     }
 
-    @SuppressWarnings("unchecked")
     public List<Questao> questoes() {
         Response resposta = questoes.request().get();
         String json = resposta.readEntity(String.class);

@@ -1,7 +1,10 @@
 package com.ifpb.followup.model;
 
 import java.io.Serializable;
+import java.io.StringReader;
 import java.util.Objects;
+import javax.json.Json;
+import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.persistence.Column;
 import javax.persistence.Entity;
