@@ -32,7 +32,7 @@ public abstract class ImprimirAtividade {
 
         FacesContext facesContext = FacesContext.getCurrentInstance();
         HttpServletResponse response = (HttpServletResponse) facesContext.getExternalContext().getResponse();
-        InputStream reportStream = facesContext.getExternalContext().getResourceAsStream("/WEB-INF/report/alunoativid.jasper");
+        InputStream reportStream = facesContext.getExternalContext().getResourceAsStream("/WEB-INF/report/atividadefinal.jasper");
 
         HashMap parameters = new HashMap();
         JRDataSource jrds = new JRBeanCollectionDataSource(dados);
