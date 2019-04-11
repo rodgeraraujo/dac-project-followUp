@@ -31,10 +31,16 @@ public class ControladorQuestionario implements Serializable{
         return "questionarios.xhtml";
     }
     
-//    public String editar(Avaliacao a){
-//        this.questinario = a;
-//        return "adicionar-questionario.xhtml";
-//    }
+    public String editar(Avaliacao a){
+        this.questinario = a;
+        return "editar-questionario.xhtml";
+    }
+    
+    public String atualizar(){
+        consumerAvaliacao.atualizar(questinario);
+        this.questinario = new Avaliacao();
+        return "questionarios.xhtml";
+    }
     
     public String remover(long id){
         consumerAvaliacao.delete(id);
