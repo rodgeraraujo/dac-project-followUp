@@ -1,8 +1,10 @@
 package com.ifpb.followup.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import javax.json.JsonObject;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -27,6 +29,14 @@ public class Avaliacao implements Serializable{
     private TipoAvaliacao tipo;
 
     public Avaliacao() {
+        this.questao = new ArrayList<>();
+    }
+
+    public Avaliacao(JsonObject jsonObject) {
+        this.id = jsonObject.getJsonNumber("id").longValue();
+        this.titulo = jsonObject.getString("titulo");
+        //tipo
+        //questoes
     }
 
     public long getId() {
