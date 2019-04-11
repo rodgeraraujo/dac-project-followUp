@@ -26,7 +26,7 @@ import javax.ws.rs.core.Response;
 @Stateless
 public class ConsumerQuestao {
     
-    private final String url = "http://0.0.0.0:8080/followUP/api/questao";
+    private final String url = "http://0.0.0.0:8080/followUp/api/questao";
     private final Client client = ClientBuilder.newClient();
     private final WebTarget questoes = client.target(url);
     

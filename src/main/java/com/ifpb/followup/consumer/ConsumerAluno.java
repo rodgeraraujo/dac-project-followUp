@@ -26,7 +26,7 @@ import javax.ws.rs.core.Response;
 @Stateless
 public class ConsumerAluno {
 
-    private final String url = "http://0.0.0.0:8080/followUP/api/aluno";
+    private final String url = "http://0.0.0.0:8080/followUp/api/aluno";
     private final Client client = ClientBuilder.newClient();
     private final WebTarget alunos = client.target(url);
 
