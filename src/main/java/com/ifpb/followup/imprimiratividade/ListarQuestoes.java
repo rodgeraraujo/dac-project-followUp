@@ -24,14 +24,14 @@ public class ListarQuestoes {
 
 
     EntityManager em = Persistence
-            .createEntityManagerFactory("followupPU")
+            .createEntityManagerFactory("followUp")
             .createEntityManager();
 
     public List<AtividadeAluno> getAtividade(long idAluno) {
 
         String sql = "SELECT a.matricula,a.nome, q.enunciado,q.alternativaA,q.alternativaB,q.alternativaC,q.alternativaD"
                 + " FROM questao q, aluno a "
-                + "WHERE a.id = ?1 and q.tipo='atividade'"
+                + "WHERE a.id = ?1 "
                 + "ORDER BY random() LIMIT 10";
 
         Query query = em.createNativeQuery(sql, "AtividadeMapping");

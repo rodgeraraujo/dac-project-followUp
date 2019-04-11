@@ -12,9 +12,12 @@ import com.ifpb.followup.model.Aluno;
 import com.ifpb.followup.model.Avaliacao;
 import java.io.IOException;
 import java.io.Serializable;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.view.ViewScoped;
 import javax.faces.context.FacesContext;
 
-import javax.faces.view.ViewScoped;
+
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
@@ -22,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Cliente
  */
-@Named
+@ManagedBean(name = "controladorAvaliacao")
 @ViewScoped
 public class ControladorAvaliacao implements Serializable {
 
@@ -40,6 +43,7 @@ public class ControladorAvaliacao implements Serializable {
         atividade = new AtividadePDF(
                 this.questoes.getAtividade(aluno.getId())
         );
+        this.atividade.arividadeTemplate();
 
     }
 
