@@ -1,0 +1,43 @@
+<ion-content padding>
+  <form #form="ngForm" (ngSubmit)="login(form)">
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <h3>followUp</h3>
+          </div>
+          <div padding>
+            <ion-item>
+              <ion-input name="email" type="email"  [(ngModel)]="email"  placeholder="E-mail" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="senha" type="password"  [(ngModel)]="senha"  placeholder="Senha" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label stacked>Tipo</ion-label>
+                <ion-select [(ngModel)]="tipo" >
+                  <ion-select-option value="aluno">aluno</ion-select-option>
+                  <ion-select-option value="professor">professor</ion-select-option>
+                  <!-- <ion-option value="aluno">Aluno</ion-option>
+                  <ion-option value="professor">Professor</ion-option> -->
+                </ion-select>
+            </ion-item>
+            <!-- <ion-radio-group>
+              <ion-item>
+                <ion-label>Aluno</ion-label>
+                <ion-radio  [(ngModel)]="tipo" name="tipo"  value="ALUNO" checked></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Professor</ion-label>
+                <ion-radio  [(ngModel)]="tipo" name="tipo" value="PROFESSOR"></ion-radio>
+              </ion-item>
+            </ion-radio-group> -->
+          </div>
+          <div padding>
+            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Login</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

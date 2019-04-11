@@ -1,0 +1,39 @@
+<ion-content>
+  <form  #form="ngForm" (ngSubmit)="register(form)">
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <h3>Cadastre-se!</h3>
+          </div>
+          <div padding>
+            <ion-item>
+              <ion-input  name="nome" type="text" placeholder="Nome" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="email" type="email" placeholder="E-mail" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="senha" type="password" placeholder="Senha" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="matricula" type="number" placeholder="Matrícula" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked>Tipo</ion-label>
+                  <ion-select [(ngModel)]="tipo" >
+                    <ion-select-option value="aluno">aluno</ion-select-option>
+                    <ion-select-option value="professor">professor</ion-select-option>
+                    <!-- <ion-option value="aluno">Aluno</ion-option>
+                    <ion-option value="professor">Professor</ion-option> -->
+                  </ion-select>
+              </ion-item>
+          </div>
+          <div padding>
+            <ion-button  size="large" type="submit" [disabled]="form.invalid" expand="block">Register</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
