@@ -27,17 +27,16 @@ public class ListarQuestoes {
             .createEntityManagerFactory("followupPU")
             .createEntityManager();
 
-    public List<AtividadeAluno> getAtividade(long id, long alunoId) {
+    public List<AtividadeAluno> getAtividade(long idAluno) {
 
-        String sql = "SELECT a.matricula,a.nome, q.enunciado,q.alternativaA,"
-                + "q.alternativaB,q.alternativaC,q.alternativaD FROM questao q, aluno a "
-                + "WHERE a.id = ?1 and q.id "
-                + "IN(" +
-                "SELECT q.id FROM questao q ,avaliacao_questao aq WHERE aq.avaliacao_id =?2)  ";
+        String sql = "SELECT a.matricula,a.nome, q.enunciado,q.alternativaA,q.alternativaB,q.alternativaC,q.alternativaD"
+                + " FROM questao q, aluno a "
+                + "WHERE a.id = ?1 and q.tipo='atividade'"
+                + "ORDER BY random() LIMIT 10";
 
         Query query = em.createNativeQuery(sql, "AtividadeMapping");
-       query.setParameter(1, id);
-       query.setParameter(2, alunoId);
+       query.setParameter(1, idAluno);
+       
         List<Object[]> objs = query.getResultList();
          List<AtividadeAluno> questoes = new ArrayList();
         for (Object[] o : objs) {

@@ -12,9 +12,11 @@ import com.ifpb.followup.model.Aluno;
 import com.ifpb.followup.model.Avaliacao;
 import java.io.IOException;
 import java.io.Serializable;
+import javax.faces.context.FacesContext;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -29,20 +31,19 @@ public class ControladorAvaliacao implements Serializable {
     private Avaliacao a = new Avaliacao();
     private Aluno aluno = new Aluno();
 
+
     public void imprimirtividade() throws IOException {
+
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+        aluno= (Aluno)session.getAttribute("usuario");
         atividade = new AtividadePDF(
-                this.questoes.getAtividade(a.getId(),aluno.getId())
+                this.questoes.getAtividade(aluno.getId())
         );
 
     }
 
-    public ImprimirAtividade getAtividade() {
-        return atividade;
-    }
-
-    public void setAtividade(ImprimirAtividade atividade) {
-        this.atividade = atividade;
-    }
+    
 
     public Avaliacao getA() {
         return a;
